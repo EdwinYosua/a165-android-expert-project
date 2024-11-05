@@ -5,11 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dicoding.tourismapp.core.data.TourismRepository
 import com.dicoding.tourismapp.core.di.Injection
+import com.dicoding.tourismapp.core.domain.usecase.TourismUseCase
 import com.dicoding.tourismapp.detail.DetailTourismViewModel
 import com.dicoding.tourismapp.favorite.FavoriteViewModel
 import com.dicoding.tourismapp.home.HomeViewModel
 
-class ViewModelFactory private constructor(private val tourismRepository: TourismRepository) :
+class ViewModelFactory private constructor(private val tourismRepository: TourismUseCase) :
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
@@ -21,7 +22,7 @@ class ViewModelFactory private constructor(private val tourismRepository: Touris
                 ?: synchronized(this) {
                 instance
                     ?: ViewModelFactory(
-                        Injection.provideRepository(
+                        Injection.provideUseCase(
                             context
                         )
                     )
