@@ -14,4 +14,4 @@ data class ListTourismResponse(
     @field:SerializedName("places")
     val places: List<TourismResponse>,
 
-)
+    )

@@ -28,4 +28,4 @@ data class TourismResponse(
     @field:SerializedName("image")
     val image: String,
 
-)
+    )

@@ -15,4 +15,4 @@ data class Tourism(
     val like: Int,
     val image: String,
     val isFavorite: Boolean
-):Parcelable
+) : Parcelable

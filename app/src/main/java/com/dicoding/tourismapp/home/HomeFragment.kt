@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
                             binding.progressBar.visibility = View.GONE
                             tourismAdapter.submitList(tourism.data)
                         }
+
                         is Resource.Error -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
