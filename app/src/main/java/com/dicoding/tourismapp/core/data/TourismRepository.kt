@@ -46,14 +46,15 @@ class TourismRepository private constructor(
                 localDataSource.insertTourism(tourismList)
             }
 
-            override fun shouldFetch(data: List<Tourism>?): Boolean = data.isNullOrEmpty()
+            override fun shouldFetch(data: List<Tourism>?): Boolean = true
 
         }.asLiveData()
 
 
-    override fun getFavoriteTourism(): LiveData<List<Tourism>> = localDataSource.getFavoriteTourism().map {
-        DataMapper.mapEntitiesToDomain(it)
-    }
+    override fun getFavoriteTourism(): LiveData<List<Tourism>> =
+        localDataSource.getFavoriteTourism().map {
+            DataMapper.mapEntitiesToDomain(it)
+        }
 
     override fun setFavoriteTourism(tourism: Tourism, state: Boolean) {
         val tourismEntity = DataMapper.mapDomainToEntity(tourism)
