@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.tourismapp.R
-import com.dicoding.tourismapp.core.data.Resource
-import com.dicoding.tourismapp.core.ui.TourismAdapter
 import com.dicoding.tourismapp.databinding.FragmentHomeBinding
 import com.dicoding.tourismapp.detail.DetailTourismActivity
+import com.edwinyosua.core.data.Resource
+import com.edwinyosua.core.ui.TourismAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -46,7 +46,9 @@ class HomeFragment : Fragment() {
             homeViewModel.tourism.observe(viewLifecycleOwner) { tourism ->
                 if (tourism != null) {
                     when (tourism) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is Resource.Loading -> binding.progressBar.visibility =
+                            View.VISIBLE
+
                         is Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
                             tourismAdapter.submitList(tourism.data)
